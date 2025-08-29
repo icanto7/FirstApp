@@ -13,23 +13,24 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Spacer()
-            Image(systemName: centerImage)
+            Image(centerImage)
                 .resizable()
                 .scaledToFit()
-                .foregroundStyle(.orange)
+                .clipShape(RoundedRectangle(cornerRadius: 30))
+                .shadow(radius: 30)
             Text(message)
                 .font(.largeTitle)
-                .fontWeight(.ultraLight)
+                .fontWeight(.heavy)
+                .foregroundStyle(.red)
             
             Spacer()
             
             Button("Press Me!") {
                 let message1 = "You are Awsome!"
-                let message2 = "You are Great!"
-                let imageString1 = "hand.thumbsup"
-                let imageString2 = "sun.max.fill"
+                let imageString1 = "image0"
+                let imageString2 = "image1"
                 
-                message = (message == message1 ? message2 : message1)
+                message = message1
                 centerImage = (centerImage == imageString1 ? imageString2 : imageString1)
             }
                 .buttonStyle(.borderedProminent)
