@@ -9,11 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var message = ""
-    @State private var centerImage = ""
+    @State private var imageName = ""
+    @State private var imageNumber = 0
+    
     var body: some View {
         VStack {
             Spacer()
-            Image(centerImage)
+            Image(imageName)
                 .resizable()
                 .scaledToFit()
                 .clipShape(RoundedRectangle(cornerRadius: 30))
@@ -25,13 +27,19 @@ struct ContentView: View {
             
             Spacer()
             
-            Button("Press Me!") {
+            Button("Show message") {
                 let message1 = "You are Awsome!"
-                let imageString1 = "image0"
-                let imageString2 = "image1"
                 
                 message = message1
-                centerImage = (centerImage == imageString1 ? imageString2 : imageString1)
+                
+                imageNumber += 1
+                
+                if (imageNumber > 9) {
+                    imageNumber = 0
+                }
+                
+                imageName = "image\(imageNumber)"
+                
             }
                 .buttonStyle(.borderedProminent)
                 .font(.title2)
